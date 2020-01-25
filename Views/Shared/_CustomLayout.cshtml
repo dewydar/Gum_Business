@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/easy-responsive-tabs.js"></script>
+    <link href="~/Content/flexslider.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Caption:400,700&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+</head>
+<body>
+    <div class=" banner">
+        <div class="wthree-different-dot">
+            <!-- header -->
+            <div class="header">
+                <div class="container">
+                    <div class="header-mdl agileits-logo">
+                        <!-- header-two -->
+                        <h1><a href="index.html">Fit Club</a></h1>
+                    </div>
+                    <div class="header-nav">
+                        <!-- header-three -->
+                        <nav class="navbar navbar-default">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- top-nav -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                <li>
+                                    
+                                    <a class="popup-with-zoom-anim" href="#small-dialog"data-hover="Coaches">Add Coach</a>
+
+                                </li>
+                                    <li>
+                                        <a href="/players/index"  data-hover="Coaches">Players</a>
+                                    </li>
+                                    <li><a href="/media/index"  data-hover="Coaches">Medias</a></li>
+                                    @*<li><a href="/loads/index"  data-hover="Coaches">Loads</a></li>*@
+                                    <li><a href="/History_for_player/index"  data-hover="Coaches">History For Players</a></li>
+
+                                    }
+
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li>
+                                            @using (Html.BeginForm("LogOff", "account", FormMethod.Post))
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <input type="submit" class="btn btn-danger" value="Log Out" />
+                                            }
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+
+                                            <div class="buy-button">
+                                                <a class="popup-with-zoom-anim" href="#small-dialog">Login</a>
+                                            </div>
+
+                                        </li>
+
+                                    }
+
+                                </ul>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- //header -->
+            <!-- banner slider -->
+            <div class="banner-top">
+                <div class="slider">
+                    <div class="callbacks_container">
+                        <ul class="rslides callbacks callbacks1" id="slider4">
+                            <li>
+                                <div class="wthree-different-dot">
+                                    <div class="banner_text">
+                                        <div class="container">
+                                            <h2>Health and strength</h2>
+                                            <p>Aenean molestie enim consectetur, iaculis nisi eu, viverra velit. Suspendisse accumsan ultricies enim in tristique. Nulla eget ligula in odio suscipit dignissim ut vel velit. Duis ut semper risus.</p>
+                                            <div class="thim-click-to-bottom">
+                                                <a href="#about" class="scroll">
+                                                    <i class="fa  fa-long-arrow-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wthree-different-dot">
+                                    <div class="banner_text">
+                                        <div class="container">
+                                            <h3>Fit and strong</h3>
+                                            <p>Aenean molestie enim consectetur, iaculis nisi eu, viverra velit. Suspendisse accumsan ultricies enim in tristique. Nulla eget ligula in odio suscipit dignissim ut vel velit. Duis ut semper risus.</p>
+                                            <div class="thim-click-to-bottom">
+                                                <a href="#about" class="scroll">
+                                                    <i class="fa  fa-long-arrow-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wthree-different-dot">
+                                    <div class="banner_text">
+                                        <div class="container">
+                                            <h3>Workout harder</h3>
+                                            <p>Aenean molestie enim consectetur, iaculis nisi eu, viverra velit. Suspendisse accumsan ultricies enim in tristique. Nulla eget ligula in odio suscipit dignissim ut vel velit. Duis ut semper risus.</p>
+                                            <div class="thim-click-to-bottom">
+                                                <a href="#about" class="scroll">
+                                                    <i class="fa  fa-long-arrow-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="wthree-different-dot">
+                                    <div class="banner_text">
+                                        <div class="container">
+                                            <h3>Run and exercise</h3>
+                                            <p>Aenean molestie enim consectetur, iaculis nisi eu, viverra velit. Suspendisse accumsan ultricies enim in tristique. Nulla eget ligula in odio suscipit dignissim ut vel velit. Duis ut semper risus.</p>
+                                            <div class="thim-click-to-bottom">
+                                                <a href="#about" class="scroll">
+                                                    <i class="fa  fa-long-arrow-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- banner slider -->
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    <!-- footer -->
+    <section class="footer">
+        <div class="container">
+            <div class="agileinfo-grids">
+                <div class="agile-grid-left agile-grid-right">
+                    <h4>Keep Updated On Social Media</h4>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-vk"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <div class="agile-nav">
+                        <ul>
+                            <li><a href="/home/index">Home</a></li>
+                            <li><a href="/players/index">Players</a></li>
+                            <li><a href="/media/index">Media</a></li>
+                            <li><a href="/History_for_player/index">History</a></li>
+                        </ul>
+                    </div>
+                }}
+
+        </div>
+    </section>
+    <!-- //footer -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/easy-responsive-tabs.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#horizontalTab').easyResponsiveTabs({
+                type: 'default', //Types: default, vertical, accordion
+                width: 'auto', //auto or any width like 600px
+                fit: true,   // 100% fit in a container
+                closed: 'accordion', // Start closed if in accordion view
+                activate: function (event) { // Callback function if tab is switched
+                    var $tab = $(this);
+                    var $info = $('#tabInfo');
+                    var $name = $('span', $info);
+                    $name.text($tab.text());
+                    $info.show();
+                }
+            });
+            $('#verticalTab').easyResponsiveTabs({
+                type: 'vertical',
+                width: 'auto',
+                fit: true
+            });
+        });
+    </script>
+    <!-- //Responsive tabs for coachhes section -->
+    <!-- scrolling script -->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <script src="~/Scripts/responsiveslides.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <script src="~/Scripts/jquery.magnific-popup.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+    </script>
+    <!-- //Pop-up for pricing tables -->
+    <!-- Stats-Number-Scroller-Animation-JavaScript -->
+    <script src="~/Scripts/waypoints.min.js"></script>
+    <script src="~/Scripts/counterup.min.js"></script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
+    <script src="~/Scripts/jquery.flexslider.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+    </script>
+    <!-- //flexSlider --><!-- for testimonials -->
+    <!-- Smooth scrolling -->
+    <script src="~/Scripts/SmoothScroll.min.js"></script>
+    <script src="~/Scripts/move-top.js"></script>
+    <script src="~/Scripts/easing.js"></script>
+
+    <!-- here stars scrolling icon -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

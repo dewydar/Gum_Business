@@ -1,0 +1,223 @@
+﻿@model GymBusiness.Models.ViewModels.ChartVM
+
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+
+
+        <script>
+            window.onload = function () {
+
+                // Initial Values
+                var name='@ViewBag.Playername';
+                var xValue = 0;
+                var newDataCount = 6;
+                dataPoints = [];
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    theme: "light2",
+                    title: {
+                        text: name + " History Of Wieghts And Days"
+                    },
+                    axisY: {
+                        suffix: " KG/Day",
+                    },
+                    data: [{
+                        type: "spline",
+                        yValueFormatString: "#,##0.## µg/m3",
+                        dataPoints: dataPoints
+                    }]
+                });
+
+                updateData();
+
+                function addData(data) {
+                    if (newDataCount !== 1) {
+                        $.each(data, function (key, value) {
+                            dataPoints.push({ x: value.x, y: parseFloat(value.y) });
+                            xValue++;
+                            yValue = parseFloat(value.y);
+                        });
+                        newDataCount = 1;
+                    } else {
+                        //dataPoints.shift();
+                        dataPoints.push({ x: data[0].x, y: parseFloat(data[0].y) });
+                        xValue++;
+                        yValue = parseFloat(data[0].y);
+                    }
+                    chart.render();
+
+                }
+
+                function updateData() {
+                    $.getJSON("/History_for_player/json?playerid=" +@Model.ID, addData);
+                }
+
+            }
+        </script>
+    </head>
+    <body>
+        
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        @Html.ActionLink("All Players", "index", "players", null, null)
+
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    </body>
+    </html>
+
+
+
+
+
+    @*@model GymBusiness.Models.ViewModels.ChartVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+            window.onload = function () {
+
+                // Initial Values
+
+                var xValue = 0;
+                var yValue = 10;
+                var newDataCount = 6;
+                dataPoints = [];
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    theme: "light2",
+                    title: {
+                        text: "Live Air Quality Update"
+                    },
+                    axisY: {
+                        suffix: " µg/m3",
+                    },
+                    data: [{
+                        type: "spline",
+                        yValueFormatString: "#,##0.## µg/m3",
+                        dataPoints: dataPoints
+                    }]
+                });
+
+                updateData();
+
+                function addData(data) {
+                    if (newDataCount !== 1) {
+                        $.each(data, function (key, value) {
+                            dataPoints.push({ x: value.x, y: parseFloat(value.y) });
+                            xValue++;
+                            yValue = parseFloat(value.y);
+                        });
+                        newDataCount = 1;
+                    } else {
+                        //dataPoints.shift();
+                        dataPoints.push({ x: data[0].x, y: parseFloat(data[0].y) });
+                        xValue++;
+                        yValue = parseFloat(data[0].y);
+                    }
+                    chart.render();
+                    setTimeout(updateData, 3000);
+                }
+
+                function updateData() {
+                        $.getJSON("/home/json?xstart=" + @Model.ID, addData);
+                }
+
+            }
+    </script>
+</head>
+<body>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <title>Area</title>
+    </head>
+    <body>
+        <div id="chartContainer"></div>
+
+        <script >
+            window.onload=function () {
+                //var a = ViewBag.weight;
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    theme: "light2",
+                    animationEnabled: true,
+                    title: {
+                        text: "Reports Of Players",
+                        fontSize: 25
+                    },
+                    axisX: {
+
+                        valueFormatString: "Weight",
+                        interval: 1,
+                        intervalType: "month"
+
+                    },
+                    axisY: {
+                        title: "Number Of Days"
+                    },
+
+                    data: [
+                        {
+                            type: "area",
+                            dataPoints: [
+
+                                { x: /*ViewBag.weight*/1, y: 6 /*ViewBag.Days*/ },
+                                {x:2,y:12}
+
+                            ]
+                        }
+                    ]
+                });
+
+                chart.render();
+            };
+        </script>
+
+    </body>
+    </html>*@	

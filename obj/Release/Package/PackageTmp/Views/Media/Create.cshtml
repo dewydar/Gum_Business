@@ -1,0 +1,69 @@
+﻿@model GymBusiness.Models.ViewModels.MediaVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create","Media",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Media</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Media_Path, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Media_Path, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Media_Path, "", new { @class = "text-danger" })*@
+                <input type='file'  id='fileUpload' name="Media_Path" class="form-control"/>
+                @Html.ValidationMessageFor(model => model.Media_Path, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Player_id, "Player Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a=>a.Player_id, ViewBag.Player_id as SelectList,"--Chosee Player", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Player_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Coach_id, "Coach Email", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(a=>a.Coach_id, ViewBag.Coach_id as SelectList,"--Chosee Cach", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Coach_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    $(function () {
+    $('#fileUpload').fileupload({
+    dataType: 'json',
+    done: function (e, data) {
+    $.each(data.result.files, function (index, file) {
+    $('
+    <p />').text(file.name).appendTo(document.body);
+    });
+    }
+    });
+    });
+}

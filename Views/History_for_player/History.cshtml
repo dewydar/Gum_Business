@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+@model GymBusiness.Models.ViewModels.ChartVM
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>History</title>
+    <link href="~/Content/Datatable.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container" style="margin-top:4rem">
+    <h2 class="tName" style="margin-left:40rem">Reports For @ViewBag.Playername</h2>
+    <table class="table" id="Table">
+        <thead>
+
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Load.ID)
+                    </th>*@
+                <th>
+                    Date
+                </th>
+                <th>
+                    Weight
+                </th>
+                <th>Load1</th>
+                <th>Load2</th>
+                <th>Load3</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.History)
+            {
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Load.ID)
+                        </td>*@
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datetime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => item.Load.Load1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => item.Load.Load2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => item.Load.Load3)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Datatable1.js"></script>
+    <script src="~/Scripts/Datatable2.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Table').DataTable();
+            $("#Table_info").text("");
+        });
+    </script>
+
+</body>
+</html>
